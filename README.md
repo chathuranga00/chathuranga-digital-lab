@@ -1,20 +1,40 @@
-# CHATHURANGA // DIGITAL LAB (Portfolio Platform)
+# CHATHURANGA // DIGITAL LAB
 
-> A modern, engineering-first digital laboratory and developer portfolio for **Chathuranga Sandaruwan** (Computer Science Student at NSBM Green University & Full Stack Developer). Engineered with a high-performance dark aesthetic, interactive architecture blueprints, an interactive CLI terminal emulator, live GitHub telemetry, and Git commit history tracking.
+[![Vite](https://img.shields.io/badge/Vite-6.4-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+> Interactive digital engineering laboratory and portfolio for **Chathuranga Sandaruwan** — Computer Science Student at NSBM Green University and Full Stack Developer. Engineered with an interactive command-line terminal, deep architectural X-ray blueprints, real system post-mortems, and live GitHub telemetry.
 
 ---
 
-## 🚀 Quick Start & Setup
+## ⚡ Key Highlights & Systems
+
+- **System Boot Sequence**: Full-screen cyber-terminal bootloader featuring animated telemetry, magnetic CTA, and instant keyboard bypass (`Esc` / skip).
+- **X-Ray Project Blueprint Viewer**: Deep architectural modals displaying system workflows, transactional concurrency models, challenges, and lessons learned.
+- **Interactive CLI Terminal**: Functional terminal emulator supporting tab-autocompletion, command history (`↑`/`↓`), typewriter text streaming, and easter eggs (`sudo chathuranga`).
+- **Real Production Post-Mortems**: Incident reports covering serverless timeouts, CORS preflight gateways, and database concurrency locks (`PESSIMISTIC_WRITE`).
+- **Live GitHub Telemetry**: Real-time stats, repository counts, language distributions, and commit feeds streamed directly from the public GitHub REST API.
+- **Universe Skill Constellation**: Interactive force-directed network graph visualizing core competencies across Computer Science, Backend, Frontend, and Mobile.
+- **Developer HUD**: Toggleable viewport grid, render diagnostics, and system latency telemetry accessible via `Ctrl+Shift+D`.
+- **Accessibility & Performance**: 100% keyboard navigable, ARIA-compliant, zero layout shift, and strict adherence to `prefers-reduced-motion`.
+
+---
+
+## 🚀 Quick Start & Local Setup
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
+- **Node.js**: `v18.0.0` or higher
+- **npm**: `v9.0.0` or higher (or `pnpm` / `yarn`)
 
-### Installation & Local Development
+### Installation
 
-1. **Clone or Navigate to the Project Root**:
+1. **Clone the Repository**:
    ```bash
-   cd "Q:\MY Projects\New folder (2)"
+   git clone https://github.com/chathuranga00/chathuranga-digital-lab.git
+   cd chathuranga-digital-lab
    ```
 
 2. **Install Dependencies**:
@@ -22,7 +42,7 @@
    npm install
    ```
 
-3. **Start Local Development Server**:
+3. **Start the Development Server**:
    ```bash
    npm run dev
    ```
@@ -33,101 +53,78 @@
    npm run build
    npm run preview
    ```
-   *Note: Vite is configured with code-splitting (`vendor`, `motion`, `icons`), generating optimized chunks and fast load times.*
 
 ---
 
-## 📁 Project Architecture & Folder Structure
+## 🏗️ Project Architecture & Directory Structure
 
 ```text
-├── index.html                    # Root HTML template with SEO tags & font preconnects
-├── vite.config.ts                # Vite config with manual chunking & path aliases
-├── tailwind.config.js            # Tailwind theme tokens (colors, fonts, glassmorphism)
-├── tsconfig.json                 # TypeScript strict compiler configuration
-├── src/
-│   ├── main.tsx                  # React 19 root bootstrap
-│   ├── App.tsx                   # Master lab layout & state orchestrator
-│   ├── index.css                 # Tailwind directives, CSS variables, & custom scrollbars
-│   │
-│   ├── components/               # Specialized UI modules
-│   │   ├── Hero.tsx              # System boot landing screen with magnetic CTA
-│   │   ├── Navbar.tsx            # Floating glassmorphic navigation with mobile drawer
-│   │   ├── Identity.tsx          # IDENTITY.EXE bio terminal & portrait module
-│   │   ├── Universe.tsx          # Interactive constellation graph (mobile accordion)
-│   │   ├── Projects.tsx          # Architectural lab experiment cards
-│   │   ├── ProjectViewer.tsx     # Full-screen X-ray architectural blueprint modal
-│   │   ├── BugArchive.tsx        # Incident post-mortems & debugging reports
-│   │   ├── EngineeringMindset.tsx# 8-stage methodology pipeline (Problem → Improve)
-│   │   ├── TechStack.tsx         # Categorized tool grid with project usage popovers
-│   │   ├── CurrentlyBuilding.tsx # Live sprint dispatch panel (no fake percentages)
-│   │   ├── Journey.tsx           # Vertical Git commit history timeline
-│   │   ├── GitHub.tsx            # Client-side GitHub REST API integration
-│   │   ├── Contact.tsx           # "ESTABLISH CONNECTION" terminal & direct channels
-│   │   ├── Terminal.tsx          # Interactive CLI with real parser & typing effect
-│   │   ├── DeveloperMode.tsx     # Ctrl+Shift+D technical grid overlay & HUD
-│   │   └── LabChrome.tsx         # Ambient scroll progress, clock, & status indicators
-│   │
-│   ├── data/                     # Strictly typed data sources
-│   │   ├── siteConfig.ts         # Developer credentials, bio, links, and version
-│   │   ├── projects.ts           # Full X-ray project blueprints & concurrency notes
-│   │   ├── skills.ts             # Categorized tech stack & cross-project relationships
-│   │   ├── bugs.ts               # Production post-mortems (Problem → Solution)
-│   │   ├── journey.ts            # Git commit timeline milestones by release epoch
-│   │   └── currentlyBuilding.ts  # Active sprint initiatives & pipeline states
-│   │
-│   └── hooks/
-│       └── useMotionConfig.ts    # Centralized prefers-reduced-motion animation hook
+chathuranga-digital-lab/
+├── index.html                    # Root HTML document & meta headers
+├── vite.config.ts                # Vite build configuration & chunking
+├── tailwind.config.js            # Design tokens, palette & typography
+├── tsconfig.json                 # Strict TypeScript configuration
+├── public/                       # Static public assets
+│   └── profile.png               # High-resolution verified portrait
+└── src/
+    ├── main.tsx                  # React application entrypoint
+    ├── App.tsx                   # Master page layout & state orchestrator
+    ├── index.css                 # CSS variables, design tokens & custom utilities
+    ├── components/               # Modular UI components
+    │   ├── Hero.tsx              # System boot landing screen
+    │   ├── Navbar.tsx            # Floating glassmorphic navigation
+    │   ├── Identity.tsx          # Bio, credentials & portrait frame
+    │   ├── Universe.tsx          # Interactive technology constellation graph
+    │   ├── Projects.tsx          # Architectural experiment cards & badges
+    │   ├── ProjectViewer.tsx     # Full-screen X-ray blueprint modal
+    │   ├── BugArchive.tsx        # Production post-mortems & debugging logs
+    │   ├── EngineeringMindset.tsx# 8-stage software engineering methodology
+    │   ├── TechStack.tsx         # Categorized tool grid & project popovers
+    │   ├── CurrentlyBuilding.tsx # Active sprint dispatch dashboard
+    │   ├── Journey.tsx           # Vertical Git commit timeline
+    │   ├── GitHub.tsx            # Live GitHub REST API telemetry
+    │   ├── Contact.tsx           # ESTABLISH CONNECTION transmission terminal
+    │   ├── Terminal.tsx          # Interactive CLI terminal emulator
+    │   ├── DeveloperMode.tsx     # Ctrl+Shift+D developer HUD & grid
+    │   └── LabChrome.tsx         # Ambient status bars & live clock
+    ├── data/                     # Strictly typed data sources
+    │   ├── siteConfig.ts         # Personal details, contacts & build tag
+    │   ├── projects.ts           # Project blueprints & concurrency models
+    │   ├── skills.ts             # Technical skills & project links
+    │   ├── bugs.ts               # Authentic incident write-ups
+    │   ├── journey.ts            # Commit timeline milestone history
+    │   └── currentlyBuilding.ts  # Real sprint targets & focus areas
+    └── hooks/
+        └── useMotionConfig.ts    # Centralized prefers-reduced-motion hook
 ```
 
 ---
 
-## 📝 Content Configuration Guide (Where to Edit)
+## 🛠️ Tech Stack & Tooling
 
-All portfolio content is decoupled from components and stored cleanly in `src/data/`:
-
-| File | Content Controlled |
+| Domain | Technologies |
 | :--- | :--- |
-| **`src/data/siteConfig.ts`** | Name, role, email, phone, location, GitHub username, LinkedIn URL, and build version. |
-| **`src/data/projects.ts`** | Project titles, subtitles, statuses, tech stacks, and in-depth X-ray specifications (Problem, Idea, Architecture Notes, Concurrency Challenges, Solutions, Lessons). |
-| **`src/data/bugs.ts`** | Engineering incident post-mortems (`BUG #001`, etc.) with problem descriptions, investigation checklists, solutions, and architectural lessons. |
-| **`src/data/journey.ts`** | Git commit history milestones categorized by year (`2024`, `2025`, `2026`) and commit types (`milestone`, `feat`, `build`, `refactor`). |
-| **`src/data/currentlyBuilding.ts`** | Active sprint pipeline items with real architectural invariants (no fake percentages). |
-| **`src/data/skills.ts`** | Categorized technical competencies and cross-project links. |
+| **Frontend Core** | React 19, TypeScript, Vite |
+| **Styling & Design** | Tailwind CSS, CSS Grid, Glassmorphism, Custom Theme Tokens |
+| **Motion & Animation** | Framer Motion (respecting `prefers-reduced-motion`) |
+| **Iconography** | Lucide React |
+| **Backend & Cloud Integration** | Spring Boot 3.5, Supabase, PostgreSQL, MySQL 8, NVIDIA NIM |
+| **APIs & Telemetry** | GitHub REST API v3, Native Fetch |
 
 ---
 
-## 📍 Important Placeholders to Know
+## 📬 Contact & Connect
 
-1. **LinkedIn Profile URL**:
-   - Configured in: [`src/data/siteConfig.ts`](src/data/siteConfig.ts) (`linkedinUrl`)
-   - Current value: `https://www.linkedin.com/in/chathuranga-sandaruwan-44b054365`
-
-2. **Professional Portrait Photo**:
-   - Configured in: [`src/components/Identity.tsx`](src/components/Identity.tsx)
-   - Search for: `/* REPLACE: professional portrait image */`
-   - Replace the placeholder image URL with your actual professional headshot image path.
-
-3. **Project Result Screenshots**:
-   - In [`src/data/projects.ts`](src/data/projects.ts), each project has a `screenshots: []` array.
-   - When project screenshots are ready, add the image URLs or local paths to this array; the modal will automatically render an image showcase instead of the default placeholder.
-
-4. **Real Bug Reports**:
-   - Pre-populated with real concurrency and architecture incidents (Pessimistic DB deadlocks, JWT clock skews, Memory leaks) in [`src/data/bugs.ts`](src/data/bugs.ts). Update with additional real incidents as they arise.
+- **Engineer**: Chathuranga Sandaruwan
+- **Education**: Computer Science Student at NSBM Green University
+- **Location**: Moratuwa, Colombo, Sri Lanka
+- **Personal Email**: [chathurangasadaruwan076@gmail.com](mailto:chathurangasadaruwan076@gmail.com)
+- **Academic Email**: [hacsandaruwan@students.nsbm.ac.lk](mailto:hacsandaruwan@students.nsbm.ac.lk)
+- **GitHub**: [@chathuranga00](https://github.com/chathuranga00)
+- **LinkedIn**: [chathuranga-sandaruwan-44b054365](https://www.linkedin.com/in/chathuranga-sandaruwan-44b054365/)
 
 ---
 
-## ⚡ Special Interactive Features
+## 📄 License
 
-- **Interactive CLI Terminal**:
-  - Open via the bottom-right **`CLI // LAB`** button or the **`ESC`** key.
-  - Supports commands: `help`, `about`, `projects`, `open <project-id>`, `skills`, `mindset`, `building`, `journey`, `github`, `linkedin`, `contact`, and `clear`.
-  - Easter Egg: Type `sudo chathuranga` to authenticate root privileges.
-- **Developer Mode**:
-  - Global shortcut **`Ctrl+Shift+D`** (or **`Cmd+Shift+D`**) toggles an engineering viewport grid overlay and real-time telemetry HUD.
-- **Full-Screen X-Ray Project Viewer**:
-  - Click any experiment card (or type `open <project-id>` in the terminal) to open the deep architectural breakdown with SVG flow diagrams, challenges, and concurrency solutions.
-- **Ambient Telemetry HUD**:
-  - Features a live clock, dynamic scroll-progress bar, active section tracker, and nominal system status indicators.
-- **Accessibility & Motion**:
-  - Fully navigable via keyboard (<kbd>Tab</kbd>, <kbd>Arrow keys</kbd>, <kbd>Enter</kbd>, <kbd>Esc</kbd>).
-  - Honors `prefers-reduced-motion` across all animations and transitions.
+This project is licensed under the [MIT License](LICENSE).
