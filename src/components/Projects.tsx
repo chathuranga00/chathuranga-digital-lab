@@ -13,6 +13,18 @@ export const Projects: React.FC<ProjectsProps> = ({
   onSelectProject,
 }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("ALL");
+
+  const categories = ["ALL", "FULL-STACK", "SYSTEMS", "ACADEMIC", "CREATIVE"] as const;
+
+  const filteredProjects = activeCategory === "ALL"
+    ? projects
+    : projects.filter((p) => p.category === activeCategory);
+
+  const getCategoryCount = (cat: string) => {
+    if (cat === "ALL") return projects.length;
+    return projects.filter((p) => p.category === cat).length;
+  };
 
   // Sync external selection (e.g. from Terminal 'open <project-id>')
   useEffect(() => {
@@ -74,9 +86,41 @@ export const Projects: React.FC<ProjectsProps> = ({
         </p>
       </div>
 
+      {/* Category Filter Tabs */}
+      <div className="flex flex-wrap items-center gap-2 mb-8 select-none" role="tablist" aria-label="Project Categories">
+        {categories.map((cat) => {
+          const isActive = activeCategory === cat;
+          const count = getCategoryCount(cat);
+          return (
+            <button
+              key={cat}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold transition-all duration-200 border flex items-center space-x-1.5 cursor-pointer ${
+                isActive
+                  ? "bg-accent text-white border-accent shadow-md shadow-accent/20"
+                  : "bg-surface/80 border-border text-text-secondary hover:text-text-primary hover:border-accent/40 hover:bg-surface-muted"
+              }`}
+            >
+              <span>{cat}</span>
+              <span
+                className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                  isActive ? "bg-white/20 text-white" : "bg-surface-muted border border-border/80 text-text-secondary"
+                }`}
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* Lab Experiment Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => {
+        {filteredProjects.map((project) => {
+          const globalIndex = projects.findIndex((p) => p.id === project.id) + 1;
           const statusStyle = getStatusBadge(project.status);
 
           return (
@@ -98,12 +142,18 @@ export const Projects: React.FC<ProjectsProps> = ({
               <div>
                 <div className="flex items-center justify-between gap-3 mb-4 select-none">
                   <div className="flex items-center space-x-2 text-[11px] font-mono text-text-secondary">
-                    <span className="text-accent font-bold">EXP_0{index + 1}</span>
+                    <span className="text-accent font-bold">EXP_{globalIndex < 10 ? `0${globalIndex}` : globalIndex}</span>
                     <span className="text-border">/</span>
                     <span className="uppercase tracking-wider font-semibold">LAB_SPEC</span>
                   </div>
 
                   <div className="flex items-center space-x-2">
+                    {project.category && (
+                      <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold tracking-wider uppercase bg-surface-muted border border-border text-text-secondary">
+                        {project.category}
+                      </span>
+                    )}
+
                     {project.badge && (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-wider uppercase bg-amber-500/15 border border-amber-500/40 text-amber-300">
                         {project.badge}

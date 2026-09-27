@@ -243,6 +243,82 @@ export const ProjectViewer: React.FC<ProjectViewerProps> = ({ project, onClose }
       );
     }
 
+        if (id === "forum-website") {
+      return (
+        <div className="w-full p-6 rounded-xl border border-border/80 bg-surface-muted/60 font-mono text-xs">
+          <div className="text-[11px] text-text-secondary/70 uppercase tracking-widest mb-4 flex items-center space-x-1.5">
+            <span className="w-2 h-2 rounded-full bg-blue-400" />
+            <span>RELATIONAL FORUM &amp; DISCUSSION WORKFLOW</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <div className="p-4 rounded-xl border border-border bg-surface flex flex-col items-center text-center">
+              <Smartphone className="w-5 h-5 text-accent mb-2" />
+              <div className="font-bold text-text-primary text-xs">Browser Client</div>
+              <div className="text-[10px] text-text-secondary mt-1">Multi-Category Sport Portal</div>
+            </div>
+
+            <div className="hidden md:flex justify-center text-accent">
+              <ArrowRight className="w-5 h-5 animate-pulse" />
+            </div>
+
+            <div className="p-4 rounded-xl border border-accent/40 bg-accent/10 flex flex-col items-center text-center shadow-lg">
+              <Shield className="w-5 h-5 text-accent mb-2" />
+              <div className="font-bold text-text-primary text-xs">PHP MVC Engine</div>
+              <div className="text-[10px] text-text-secondary mt-1">Auth Sessions + Search Filter</div>
+            </div>
+
+            <div className="hidden md:flex justify-center text-accent">
+              <ArrowRight className="w-5 h-5 animate-pulse" />
+            </div>
+
+            <div className="p-4 rounded-xl border border-border bg-surface flex flex-col items-center text-center">
+              <Database className="w-5 h-5 text-emerald-400 mb-2" />
+              <div className="font-bold text-text-primary text-xs">MySQL forum_db</div>
+              <div className="text-[10px] text-text-secondary mt-1">Thread &amp; Reply Cascades</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (id === "chathuranga-digital-lab") {
+      return (
+        <div className="w-full p-6 rounded-xl border border-border/80 bg-surface-muted/60 font-mono text-xs">
+          <div className="text-[11px] text-text-secondary/70 uppercase tracking-widest mb-4 flex items-center space-x-1.5">
+            <span className="w-2 h-2 rounded-full bg-purple-400" />
+            <span>INTERACTIVE DIGITAL LAB PIPELINE</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <div className="p-4 rounded-xl border border-border bg-surface flex flex-col items-center text-center">
+              <Smartphone className="w-5 h-5 text-accent mb-2" />
+              <div className="font-bold text-text-primary text-xs">React 19 SPA</div>
+              <div className="text-[10px] text-text-secondary mt-1">Interactive CLI &amp; Blueprints</div>
+            </div>
+
+            <div className="hidden md:flex justify-center text-accent">
+              <ArrowRight className="w-5 h-5 animate-pulse" />
+            </div>
+
+            <div className="p-4 rounded-xl border border-accent/40 bg-accent/10 flex flex-col items-center text-center shadow-lg">
+              <Cpu className="w-5 h-5 text-accent mb-2" />
+              <div className="font-bold text-text-primary text-xs">Vite Rollup Chunks</div>
+              <div className="text-[10px] text-text-secondary mt-1">Motion, Vendor, Icons</div>
+            </div>
+
+            <div className="hidden md:flex justify-center text-accent">
+              <ArrowRight className="w-5 h-5 animate-pulse" />
+            </div>
+
+            <div className="p-4 rounded-xl border border-border bg-surface flex flex-col items-center text-center">
+              <Layers className="w-5 h-5 text-emerald-400 mb-2" />
+              <div className="font-bold text-text-primary text-xs">GitHub REST API</div>
+              <div className="text-[10px] text-text-secondary mt-1">Live Telemetry &amp; Cache</div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     // Default flow diagram for system architecture
     return (
       <div className="w-full p-6 rounded-xl border border-border/80 bg-surface-muted/60 font-mono text-xs">

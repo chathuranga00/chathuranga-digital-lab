@@ -40,7 +40,7 @@ interface LanguageMetric {
 }
 
 const CACHE_KEY_USER = "chathuranga_gh_user_cache";
-const CACHE_KEY_REPOS = "chathuranga_gh_repos_cache";
+const CACHE_KEY_REPOS = "chathuranga_gh_repos_cache_v3";
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes client-side cache
 
 // Language color resolver for terminal chips
@@ -61,6 +61,22 @@ const getLanguageColor = (lang: string | null): string => {
   return colors[lang] || "#6366f1";
 };
 
+// Fallback descriptions for repositories with empty GitHub descriptions
+const repoDescriptions: Record<string, string> = {
+  "chathuranga-digital-lab": "Flagship interactive digital engineering laboratory, X-ray blueprint viewer, and CLI terminal.",
+  "shuttle-project": "Campus fleet transit management API with HMAC-SHA256 QR validation and pessimistic DB row locks.",
+  "Inclass-04-cricket-app": "In-class academic practical: real-time mobile cricket match scoring in Flutter, Dart & C++.",
+  "Inclass-2": "In-class academic practical: Material 3 mobile profile interface and widget tree composition in Flutter.",
+  "EduPulse": "Sri Lankan A/L AI revision assistant with PDF parsing, NVIDIA NIM inference, and Capacitor Android.",
+  "EscapeVerse": "Interactive virtual puzzle and room-escape simulation with deterministic state logic.",
+  "Space-explorer": "Celestial navigation and interactive particle system visualization built with HTML5 Canvas.",
+  "Cyberpunk-City-Portfolio": "Stylized cyber-city environment visual concept and design token showcase.",
+  "Space-Portfolio": "Cosmic-themed interactive portfolio environment concept.",
+  "OneTapHelp": "Emergency assistance platform concept with instant SOS broadcasting and location sharing.",
+  "Forum-Website": "Full-stack sports community discussion forum with PHP, MySQL, thread categories, and reply trees.",
+  "Fitness-sharks": "Full-stack enterprise gym management platform with dual React 18 & Spring Boot 3.5 portals.",
+};
+
 export const GitHub: React.FC = () => {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -68,6 +84,7 @@ export const GitHub: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  const [showAllRepos, setShowAllRepos] = useState<boolean>(true);
   const prefersReducedMotion = useReducedMotion();
 
   // Fetch telemetry from GitHub REST API
@@ -116,7 +133,7 @@ export const GitHub: React.FC = () => {
 
       // Fetch recent public repositories
       const reposRes = await fetch(
-        `https://api.github.com/users/${siteConfig.githubUsername}/repos?per_page=12&sort=updated`,
+        `https://api.github.com/users/${siteConfig.githubUsername}/repos?per_page=100&sort=updated`,
         {
           headers: {
             Accept: "application/vnd.github.v3+json",
@@ -356,20 +373,31 @@ export const GitHub: React.FC = () => {
             </div>
           </div>
 
-          {/* Recent Repositories Grid (Top 6 real repos) */}
+          {/* Repositories Grid (All public repos with toggle) */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center space-x-2 text-xs font-mono text-text-secondary uppercase tracking-wider">
                 <Terminal className="w-3.5 h-3.5 text-accent" />
-                <span>RECENTLY UPDATED REPOSITORIES</span>
+                <span>ALL PUBLIC REPOSITORIES ({repos.length})</span>
               </div>
-              <span className="text-[11px] font-mono text-text-secondary/60">
-                Sorted by latest push
-              </span>
+              <div className="flex items-center space-x-3">
+                <span className="text-[11px] font-mono text-text-secondary/60 hidden sm:inline">
+                  Sorted by latest push
+                </span>
+                {repos.length > 6 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllRepos(!showAllRepos)}
+                    className="px-2.5 py-1 rounded-md text-[11px] font-mono border border-border bg-surface-muted hover:border-accent/40 text-text-primary transition-colors cursor-pointer"
+                  >
+                    {showAllRepos ? "SHOW TOP 6" : `SHOW ALL (${repos.length})`}
+                  </button>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {repos.slice(0, 6).map((repo) => (
+              {(showAllRepos ? repos : repos.slice(0, 6)).map((repo) => (
                 <a
                   key={repo.id}
                   href={repo.html_url}
@@ -398,7 +426,7 @@ export const GitHub: React.FC = () => {
 
                     {/* Repo Description */}
                     <p className="text-xs text-text-secondary font-sans leading-relaxed line-clamp-2 mb-4">
-                      {repo.description || "Public repository and source implementation."}
+                      {repo.description || repoDescriptions[repo.name] || "Public repository and source implementation."}
                     </p>
                   </div>
 

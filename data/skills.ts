@@ -25,6 +25,13 @@ export interface CategorizedSkills {
 export const skills: CategorizedSkills = {
   Languages: [
     {
+      name: "PHP",
+      category: "Languages",
+      projectIds: ["forum-website"],
+      description: "Server-side scripting, procedural and OOP architectures, PDO database abstraction, session management, and backend web processing."
+    },
+
+    {
       name: "Java",
       category: "Languages",
       projectIds: ["university-shuttle-system", "fitness-sharks"],
